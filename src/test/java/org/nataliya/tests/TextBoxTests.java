@@ -1,4 +1,4 @@
-package org.nataliya;
+package org.nataliya.tests;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
@@ -36,7 +36,7 @@ public class TextBoxTests {
 
 //        $("[id=output] [id=name]").shouldHave(text(name));
 //        $("[id=output]").$("[id=name]").shouldHave(text(name));
-//         $("[id=name").shouldHave(text(name));
+//        $("[id=name").shouldHave(text(name));
 //        $("p[id=permanentAddress]").shouldHave(text("Permanent Address :9/1 Oakstreet, Portland, USA"));
 //
     }
