@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -47,8 +48,22 @@ public class RegistrationForm {
 
         $(byText("Music")).click();
 
+        //$(byText("Select picture")).click();
+        $("#uploadPicture").uploadFromClasspath("picture.jpg");
+
         $("#currentAddress").setValue("9/1 Oakstreet, Portland, USA");
 
         $("#submit").click();
+
+        $(".modal-content").shouldHave(
+                text("Paul"),
+                text("Richardson"),
+                text("paulri4@gmail.com"),
+                text("Male"),
+                text("1 October,1991"),
+                text("Music"),
+                text("picture.jpg"),
+                text("9/1 Oakstreet, Portland, USA"),
+                text("English"));
     }
 }
