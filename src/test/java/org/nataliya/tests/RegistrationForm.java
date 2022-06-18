@@ -37,15 +37,12 @@ public class RegistrationForm {
         $(".react-datepicker__month-select").selectOption("October");
         $(".react-datepicker__year-select").selectOption("1991");
         $(".react-datepicker__day--001:not(.react-datepicker__day--outside-month)").click();
-        //$(byText("1991")).scrollIntoView(true).click();
-       // $(byText("1")).click();
 
         $("#subjectsInput").sendKeys("English");
         $("#subjectsInput").pressEnter();
 
         $("#hobbiesWrapper").$(byText("Music")).click();
 
-        //$(byText("Select picture")).click();
         $("#uploadPicture").uploadFromClasspath("picture.jpg");
 
         $("#currentAddress").setValue("9/1 Oakstreet, Portland, USA");
