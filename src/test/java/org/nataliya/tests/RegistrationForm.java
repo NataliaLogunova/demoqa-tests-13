@@ -65,3 +65,4 @@ public class RegistrationForm {
                 text("English"));
     }
 }
+
