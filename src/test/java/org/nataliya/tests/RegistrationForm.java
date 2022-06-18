@@ -27,31 +27,32 @@ public class RegistrationForm {
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
 
-        $("[id=firstName]").setValue(name);
-        $("[id=lastName]").setValue("Richardson");
-
-        $("[id=userEmail]").setValue("paulri4@gmail.com");
-
-        $(byText("Male")).click();
-
-        $("[id=userNumber]").setValue("9010003344");
+        $("#firstName").setValue(name);
+        $("#lastName").setValue("Richardson");
+        $("#userEmail").setValue("paulri4@gmail.com");
+        $("#genterWrapper").$(byText("Male")).click();
+        $("#userNumber").setValue("9010003344");
 
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").click();
-        $(byText("October")).click();
-        $(".react-datepicker__year-select").click();
-        $(byText("1991")).scrollIntoView(true).click();
-        $(byText("1")).click();
+        $(".react-datepicker__month-select").selectOption("October");
+        $(".react-datepicker__year-select").selectOption("1991");
+        $(".react-datepicker__day--001:not(.react-datepicker__day--outside-month)").click();
+        //$(byText("1991")).scrollIntoView(true).click();
+       // $(byText("1")).click();
 
         $("#subjectsInput").sendKeys("English");
         $("#subjectsInput").pressEnter();
 
-        $(byText("Music")).click();
+        $("#hobbiesWrapper").$(byText("Music")).click();
 
         //$(byText("Select picture")).click();
         $("#uploadPicture").uploadFromClasspath("picture.jpg");
 
         $("#currentAddress").setValue("9/1 Oakstreet, Portland, USA");
+        $("#state").click();
+        $("#stateCity-wrapper").$(byText("NCR")).click();
+        $("#city").click();
+        $("#stateCity-wrapper").$(byText("Delhi")).click();
 
         $("#submit").click();
 
