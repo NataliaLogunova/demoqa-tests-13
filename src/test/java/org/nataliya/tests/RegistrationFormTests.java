@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 
-public class RegistrationForm {
+public class RegistrationFormTests {
 
     @BeforeAll
     static void setUp() {
@@ -32,25 +32,19 @@ public class RegistrationForm {
         $("#userEmail").setValue("paulri4@gmail.com");
         $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("9010003344");
-
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("October");
         $(".react-datepicker__year-select").selectOption("1991");
         $(".react-datepicker__day--001:not(.react-datepicker__day--outside-month)").click();
-
         $("#subjectsInput").sendKeys("English");
         $("#subjectsInput").pressEnter();
-
         $("#hobbiesWrapper").$(byText("Music")).click();
-
         $("#uploadPicture").uploadFromClasspath("picture.jpg");
-
         $("#currentAddress").setValue("9/1 Oakstreet, Portland, USA");
         $("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Delhi")).click();
-
         $("#submit").click();
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
