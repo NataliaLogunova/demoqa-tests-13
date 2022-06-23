@@ -88,7 +88,8 @@ public class RegistrationFormPage {
     }
 
     public RegistrationFormPage setAddress (String value) {
-        $("#currentAddress").setValue("9/1 Oakstreet, Portland, USA");
+       // $("#currentAddress").setValue("9/1 Oakstreet, Portland, USA");
+        $("#currentAddress").setValue(value);
 
         return this;
     }
@@ -113,7 +114,7 @@ public class RegistrationFormPage {
 
     public RegistrationFormPage checkFormAppeared(String value) {
         $("#example-modal-sizes-title-lg")
-                .shouldHave(text("Thanks for submitting the form"));
+                .shouldHave(text(value));
 
         return this;
     }
