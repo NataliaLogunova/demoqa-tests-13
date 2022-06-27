@@ -1,4 +1,4 @@
-package org.nataliya.tests;
+package org.nataliya.docs;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;

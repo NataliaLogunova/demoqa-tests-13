@@ -1,56 +1,53 @@
 package org.nataliya.tests;
 
 import com.codeborne.selenide.Configuration;
+import com.github.javafaker.Faker;
+import com.github.javafaker.service.FakeValuesService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.Locale;
+
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.*;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 
-public class RegistrationForm {
+public class RegistrationFormTestsWithFaker extends TestBase {
 
-    @BeforeAll
-    static void setUp() {
-        Configuration.holdBrowserOpen = true;
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-    }
+ //   Faker faker = new Faker();
+    Faker faker = new Faker(new Locale("de"));
+    String firstName = faker.address().firstName();
+    String lastName = faker.address().lastName();
+    String userEmail = faker.internet().emailAddress();
+    String currentAddress = faker.aquaTeenHungerForce().character();
+
 
     @Test
     void fillFormTest() {
-        String name = "Paul";
 
         open("/automation-practice-form");
-
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
 
-        $("#firstName").setValue(name);
-        $("#lastName").setValue("Richardson");
-        $("#userEmail").setValue("paulri4@gmail.com");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
+        $("#userEmail").setValue(userEmail);
         $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("9010003344");
-
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("October");
         $(".react-datepicker__year-select").selectOption("1991");
         $(".react-datepicker__day--001:not(.react-datepicker__day--outside-month)").click();
-
         $("#subjectsInput").sendKeys("English");
         $("#subjectsInput").pressEnter();
-
         $("#hobbiesWrapper").$(byText("Music")).click();
-
         $("#uploadPicture").uploadFromClasspath("picture.jpg");
-
-        $("#currentAddress").setValue("9/1 Oakstreet, Portland, USA");
+        $("#currentAddress").setValue(currentAddress);
         $("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Delhi")).click();
-
         $("#submit").click();
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
